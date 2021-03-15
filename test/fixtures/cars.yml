@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  make: MyString
+  model: MyString
+  model_year: 1
+  status: 1
+  price: 9.99
+  user: one
+  dealership: one
+
+two:
+  make: MyString
+  model: MyString
+  model_year: 1
+  status: 1
+  price: 9.99
+  user: two
+  dealership: two

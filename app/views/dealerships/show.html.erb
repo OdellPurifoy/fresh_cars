@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <% @dealership.cars.each do |car| %>
+    <div class="col-8">
+      <div class="card mb-3">
+        <div class="card-header">
+          <strong><%= car.make %></strong> </br>
+          <%= number_to_currency(car.price) %>
+        </div>
+        <div class="card-body">
+          <%= image_tag(car.cover_photo) if car.cover_photo.present? %>
+          <p class="card-text">Model: <%= car.model %></p>
+          <p class="card-text">Model Year: <%= car.model_year %></p>
+          <p class="card-text">Condition: <%= car.status == true ? "Used" : "New" %></p>
+        </div>
+        <div class="card-footer">
+          <% if current_user&.user_type == "admin" %>
+            <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%= link_to 'Edit', edit_car_path(car) %> |
+            <%= link_to 'Back', dealerships_path %>
+          <% else %>
+            <%= link_to 'Back', dealerships_path %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

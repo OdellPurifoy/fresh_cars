@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dealerships</h1>
+
+<div class="row">
+  <% @dealerships.each do |dealership| %>
+    <div class="col-8">
+      <div class="card mb-3">
+        <div class="card-header">
+          <%= dealership.name %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= dealership.description %></p>
+        </div>
+        <div class="card-footer">
+          <% if current_user&.user_type == "admin" %>
+            <%= link_to 'Destroy', dealership, method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%= link_to 'View Inventory', dealership %> |
+            <%= link_to 'Edit', edit_dealership_path(dealership) %>
+          <% else %>
+            <%= link_to 'View Inventory', dealership %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
